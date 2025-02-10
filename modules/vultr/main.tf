@@ -106,7 +106,7 @@ resource "vultr_instance" "kanade" {
   enable_ipv6     = true
   ddos_protection = false
   # TODO: turn this into a resource
-  firewall_group_id = "d46e64dc-1e61-49e8-8cbd-44af4db5c6c4"
+  firewall_group_id = vultr_firewall_group.kanade.id
   # FIXME: For some reason this is forcing a recreate, which means there's a problem.
   #ssh_key_ids = [
   #  vultr_ssh_key.yuki_murasame.id

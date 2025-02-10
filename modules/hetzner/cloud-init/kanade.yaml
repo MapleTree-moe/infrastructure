@@ -1,0 +1,34 @@
+#cloud-config
+###
+### mapletree.moe - kanade.mapletree.moe cloud-init
+###
+# system setup
+fqdn: kanade.mapletree.moe
+hostname: kanade
+prefer_fqdn_over_hostname: true
+create_hostname_file: true
+timezone: Europe/Berlin
+
+# ssh configuration
+disable_root: true
+disable_root_opts: no-port-forwarding,no-agent-forwarding,no-X11-forwarding
+ssh_genkeytypes: [rsa, ed25519]
+ssh:
+  emit_keys_to_console: false
+allow_public_ssh_keys: true
+ssh_pwauth: false
+
+# user configuration
+users:
+  - name: admin
+    gecos: Mapletree Administrator
+    groups: users,admin,docker,wheel
+    primary_group: admin
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    ssh_authorized_keys:
+      # yamllint disable-line rule:line-length
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEYfs1EndYHRh5WcW+jkuD7IKSvZZHM+OTqDX0RuYlY5
+  - name: containers
+    gecos: Container Engine User
+    groups: users,containers
+    primary_group: containers

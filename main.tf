@@ -16,6 +16,10 @@ terraform {
       source  = "lucky3028/discord"
       version = "~> 2.0.0"
     }
+    hcloud = {
+      source  = "hetznercloud/hcloud"
+      version = "~> 1.49"
+    }
     vultr = {
       source  = "vultr/vultr"
       version = "~> 2.23.1"
@@ -33,6 +37,9 @@ provider "b2" {
 provider "discord" {
   token = var.discord_token
 }
+provider "hcloud" {
+  token = var.hcloud_token
+}
 provider "vultr" {
   api_key     = var.vultr_api_key
   rate_limit  = 100
@@ -47,6 +54,9 @@ module "backblaze" {
 }
 module "discord_mapletree" {
   source = "./modules/discord-mapletree"
+}
+module "hetzner" {
+  source = "./modules/hetzner"
 }
 module "vultr" {
   source = "./modules/vultr"
