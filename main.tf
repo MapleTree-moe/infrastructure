@@ -1,3 +1,4 @@
+# Terraform Block
 terraform {
   cloud {
     organization = "mapletree-moe"
@@ -15,9 +16,16 @@ terraform {
       source  = "lucky3028/discord"
       version = "~> 2.0.0"
     }
+    vultr = {
+      source  = "vultr/vultr"
+      version = "~> 2.23.1"
+    }
   }
 }
 
+#
+# Provider Block
+#
 provider "b2" {
   application_key    = var.b2_application_key
   application_key_id = var.b2_application_key_id
@@ -25,27 +33,21 @@ provider "b2" {
 provider "discord" {
   token = var.discord_token
 }
+provider "vultr" {
+  api_key     = var.vultr_api_key
+  rate_limit  = 100
+  retry_limit = 3
+}
 
+#
+# Module Block
+#
 module "backblaze" {
   source = "./modules/backblaze"
 }
 module "discord_mapletree" {
   source = "./modules/discord-mapletree"
 }
-
-moved {
-  from = b2_bucket.kanade_databases
-  to   = module.backblaze.b2_bucket.kanade_databases
-}
-moved {
-  from = b2_bucket.kanade_state
-  to   = module.backblaze.b2_bucket.kanade_state
-}
-moved {
-  from = b2_bucket.zyradyl_moe_kuroneko
-  to   = module.backblaze.b2_bucket.zyradyl_moe_kuroneko
-}
-moved {
-  from = b2_bucket.zyradyl_moe_miyuki
-  to   = module.backblaze.b2_bucket.zyradyl_moe_miyuki
+module "vultr" {
+  source = "./modules/vultr"
 }

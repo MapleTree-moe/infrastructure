@@ -10,3 +10,7 @@ variable "discord_token" {
   type        = string
   description = "Nagato's Discord Bot Token for performing discord actions"
 }
+variable "vultr_api_key" {
+  type        = string
+  description = "API key to access Vultr resources"
+}
