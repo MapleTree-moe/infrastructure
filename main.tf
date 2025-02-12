@@ -57,6 +57,7 @@ provider "octodns" {
   github_repo         = var.github_repo
   branch              = var.github_branch
   scope {
+    name = "default"
     path = "zones"
   }
 }
