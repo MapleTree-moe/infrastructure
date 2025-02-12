@@ -90,5 +90,6 @@ resource "hcloud_server" "kanade" {
   public_net {
     ipv4_enabled = true
     ipv4         = hcloud_primary_ip.kanade_ipv4.id
+    ipv6_enabled = false
   }
 }
