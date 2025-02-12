@@ -53,8 +53,9 @@ provider "hcloud" {
 }
 provider "octodns" {
   github_access_token = var.github_token
-  github_org          = "MapleTree-moe"
-  github_repo         = "dns"
+  github_org          = var.github_organization
+  github_repo         = var.github_repo
+  branch              = var.github_branch
   scope {
     path = "zones"
   }
@@ -84,6 +85,7 @@ module "octodns" {
   # use them in octodns
   depends_on       = [module.hetzner]
   kanade_ipv4_addr = module.hetzner.kanade_ipv4_addr
+  zone_domain      = var.domain
 }
 module "vultr" {
   source = "./modules/vultr"

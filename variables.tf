@@ -4,6 +4,34 @@
 ###
 
 #
+# general configuration
+#
+variable "domain" {
+  type        = string
+  description = "The DNS registered domain that terraform is acting on"
+  default     = "mapletree.moe"
+}
+
+#
+# octodns configuration
+#
+variable "github_organization" {
+  type        = string
+  description = "which github organization the repository is under"
+  default     = "MapleTree-moe"
+}
+variable "github_repo" {
+  type        = string
+  description = "which repository octodns lives in"
+  default     = "dns"
+}
+variable "github_branch" {
+  type        = string
+  description = "which branch to push DNS updates to"
+  default     = "terraform"
+}
+
+#
 # credentials
 #
 variable "b2_application_key" {
