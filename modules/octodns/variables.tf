@@ -10,4 +10,5 @@ variable "zone_domain" {
 variable "kanade_ipv4_addr" {
   type        = string
   description = "ipv4 address to set kanade to"
+  default     = "1.1.1.1"
 }
