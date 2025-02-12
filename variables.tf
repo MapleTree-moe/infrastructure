@@ -28,7 +28,8 @@ variable "github_repo" {
 variable "github_branch" {
   type        = string
   description = "which branch to push DNS updates to"
-  default     = "terraform"
+  default     = "main" # FIXME: this needs something with automation in order
+  # to protect main branch from pushes.
 }
 
 #
