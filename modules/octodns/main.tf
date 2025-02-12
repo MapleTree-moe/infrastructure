@@ -17,17 +17,12 @@ terraform {
 #
 # DNS Records to Modify
 #
+# NOTE: due to a bug in the provider code any of the octodns settings results
+# in out of order keys. so don't use those.
 resource "octodns_a_record" "root" {
   zone = var.zone_domain
   name = "@"
   ttl  = 300
-  # FIXME: remove this when going back live
-  octodns = {
-    cloudflare = {
-      auto_ttl = true
-      proxied  = true
-    }
-  }
   # the root domain A value points to kanade
   values = [var.kanade_ipv4_addr]
 }

@@ -78,19 +78,17 @@ resource "hcloud_firewall" "default_firewall" {
 #
 # servers
 #
-# resource "hcloud_server" "kanade" {
-#   name        = "kanade.mapletree.moe"
-#   image       = "alma-9"
-#   server_type = "cpx11"
-#   datacenter  = var.hetzner_datacenter
-#   firewall_ids = [
-#     hcloud_firewall.default_firewall.id
-#   ]
-#   user_data = file("${path.module}/cloud-init/kanade.yaml")
-#   public_net {
-#     ipv4_enabled = true
-#     ipv4         = hcloud_primary_ip.kanade_ipv4.id
-#     ipv6_enabled = true
-#     ipv6         = hcloud_primary_ip.kanade_ipv6.id
-#   }
-# }
+resource "hcloud_server" "kanade" {
+  name        = "kanade.mapletree.moe"
+  image       = "alma-9"
+  server_type = "cpx11"
+  datacenter  = var.hetzner_datacenter
+  firewall_ids = [
+    hcloud_firewall.default_firewall.id
+  ]
+  user_data = file("${path.module}/cloud-init/kanade.yaml")
+  public_net {
+    ipv4_enabled = true
+    ipv4         = hcloud_primary_ip.kanade_ipv4.id
+  }
+}
