@@ -2,7 +2,8 @@
 # Manual edits may be lost in future updates.
 
 provider "registry.terraform.io/backblaze/b2" {
-  version = "0.10.0"
+  version     = "0.10.0"
+  constraints = "~> 0.10.0"
   hashes = [
     "h1:XopbGPMYulGkGsOipKMYwwiWkL4vfMRQ1gHhH61dFfI=",
     "zh:03d4ec22a8a47dfc4e1beccd261f37b22113646d246853195fe5d8cb6febf90c",
@@ -15,7 +16,7 @@ provider "registry.terraform.io/backblaze/b2" {
 
 provider "registry.terraform.io/hetznercloud/hcloud" {
   version     = "1.49.1"
-  constraints = "~> 1.45"
+  constraints = "~> 1.49"
   hashes = [
     "h1:PP6CUy9TR1JiaiW81dTVbXcheqWUeDhgS2T2LTo7B10=",
     "zh:3d5f9773da4f8203cf625d04a5a0e4ff7e202684c010a801a945756140c61cde",
@@ -36,7 +37,8 @@ provider "registry.terraform.io/hetznercloud/hcloud" {
 }
 
 provider "registry.terraform.io/lucky3028/discord" {
-  version = "2.0.0"
+  version     = "2.0.0"
+  constraints = "~> 2.0.0"
   hashes = [
     "h1:AipWSvzRTlV2IGqc0Tp1wtamjU0NC1una8yFIex0G6E=",
     "zh:2937de13e2ea41b79c2dbcc5cdae6b224310c6966f70362097a186f4538ceff2",
@@ -51,8 +53,7 @@ provider "registry.terraform.io/lucky3028/discord" {
 }
 
 provider "registry.terraform.io/topicusonderwijs/octodns" {
-  version     = "1.1.2"
-  constraints = "~> 1.1.2"
+  version = "1.1.2"
   hashes = [
     "h1:6WkfDuo6DW+8UnwPJv+FCZwY/ABYoUP0I89pZ0xdTAE=",
     "zh:13d25a95d369105dba1f90403a5200817194b890c75c985e8772911f048df30d",
