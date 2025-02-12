@@ -20,6 +20,10 @@ ssh_pwauth: false
 
 # user configuration
 users:
+  - name: containers
+    gecos: Container Engine User
+    groups: users,containers
+    primary_group: containers
   - name: admin
     gecos: Mapletree Administrator
     groups: users,admin,docker,wheel
@@ -28,7 +32,3 @@ users:
     ssh_authorized_keys:
       # yamllint disable-line rule:line-length
       - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEYfs1EndYHRh5WcW+jkuD7IKSvZZHM+OTqDX0RuYlY5
-  - name: containers
-    gecos: Container Engine User
-    groups: users,containers
-    primary_group: containers
