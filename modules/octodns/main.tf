@@ -18,7 +18,7 @@ terraform {
 # DNS Records to Modify
 #
 resource "octodns_a_record" "root" {
-  zone = "mapletree.moe"
+  zone = var.zone_domain
   name = "@"
   ttl  = 300
   # the root domain A value points to kanade
