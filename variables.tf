@@ -1,3 +1,11 @@
+###
+### mapletree.moe - infrastructure management
+### terraform root module
+###
+
+#
+# credentials
+#
 variable "b2_application_key" {
   type        = string
   description = "Application key to access B2 Cloud Storage"
@@ -10,7 +18,12 @@ variable "b2_application_key_id" {
 }
 variable "discord_token" {
   type        = string
-  description = "Nagato's Discord Bot Token for performing discord actions"
+  description = "Discord Bot Token for performing discord actions"
+  sensitive   = true
+}
+variable "github_token" {
+  type        = string
+  description = "Github Token for acting on a github repository"
   sensitive   = true
 }
 variable "hcloud_token" {

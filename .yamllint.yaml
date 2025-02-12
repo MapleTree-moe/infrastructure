@@ -1,3 +1,8 @@
+###
+### mapletree.moe - standards and formatting
+### yamllint configuration
+###
+
 ---
 yaml-files:
   - '*.yaml'
