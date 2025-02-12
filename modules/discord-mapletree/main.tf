@@ -1,10 +1,12 @@
 ###
-### Mapletree.moe - Discord Server Configuration
+### mapletree.moe - infrastructure management
+### discord terraform module
 ###
+
 # NOTE: configured messages are at the bottom of the file
 
 #
-# Declare Providers
+# terraform block
 #
 terraform {
   required_version = ">= 1.0.0"
@@ -17,7 +19,7 @@ terraform {
 }
 
 #
-# Managed Servers
+# managed server
 #
 resource "discord_server" "mapletree" {
   name               = "MapleTree.moe"
@@ -26,7 +28,7 @@ resource "discord_server" "mapletree" {
 }
 
 #
-# Discord Roles
+# discord roles
 #
 resource "discord_role" "admin" {
   server_id   = discord_server.mapletree.id
@@ -48,7 +50,7 @@ resource "discord_role_everyone" "everyone" {
 }
 
 #
-# MapleTree.moe - Categories
+# channel categories
 #
 resource "discord_category_channel" "readme" {
   name      = "Read Me First!"
@@ -77,7 +79,7 @@ resource "discord_category_channel" "notes" {
 }
 
 #
-# Text Channels - these are grouped into category blocks
+# text channels - group into category blocks
 #
 
 # category: readme
@@ -227,7 +229,7 @@ resource "discord_text_channel" "notes_build" {
 }
 
 #
-# Miscellaneous Settings
+# misc
 #
 resource "discord_system_channel" "system" {
   server_id         = discord_server.mapletree.id
@@ -235,7 +237,7 @@ resource "discord_system_channel" "system" {
 }
 
 #
-# Messages - Static messages subject to version control
+# messages - static messages subject to version control
 #
 resource "discord_message" "welcome_message" {
   channel_id = discord_text_channel.readme_welcome.id

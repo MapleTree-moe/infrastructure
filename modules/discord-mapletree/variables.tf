@@ -1,11 +1,18 @@
+###
+### mapletree.moe - infrastructure management
+### discord terraform module
+###
+
 #
 # reused strings
 #
+# TODO: bring these files into the repository
 variable "nagato-icon" {
   type        = string
   description = "Nagato's current Icon URL"
   default     = "https://f001.backblazeb2.com/file/zyradyl-moe-miyuki/mapletree-moe-nagato-icon.png"
 }
+# TODO: rewrite the footer as a variable
 variable "nagato-version" {
   type        = string
   description = "Nagato's current version"
