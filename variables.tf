@@ -4,7 +4,7 @@
 ###
 
 #
-# general configuration
+# general
 #
 variable "domain" {
   type        = string
@@ -13,7 +13,31 @@ variable "domain" {
 }
 
 #
-# octodns configuration
+# backblaze
+#
+variable "b2_us_application_key" {
+  type        = string
+  description = "Application key to access B2 Cloud Storage"
+  sensitive   = true
+}
+variable "b2_us_application_key_id" {
+  type        = string
+  description = "Key ID matching application key to access B2 Cloud Storage"
+  sensitive   = true
+}
+variable "b2_eu_application_key" {
+  type        = string
+  description = "Application key to access B2 Cloud Storage"
+  sensitive   = true
+}
+variable "b2_eu_application_key_id" {
+  type        = string
+  description = "Key ID matching application key to access B2 Cloud Storage"
+  sensitive   = true
+}
+
+#
+# octodns
 #
 variable "github_organization" {
   type        = string
@@ -35,16 +59,6 @@ variable "github_branch" {
 #
 # credentials
 #
-variable "b2_application_key" {
-  type        = string
-  description = "Application key to access B2 Cloud Storage"
-  sensitive   = true
-}
-variable "b2_application_key_id" {
-  type        = string
-  description = "Key ID matching application key to access B2 Cloud Storage"
-  sensitive   = true
-}
 variable "discord_token" {
   type        = string
   description = "Discord Bot Token for performing discord actions"

@@ -42,8 +42,14 @@ terraform {
 # provider configuration
 #
 provider "b2" {
-  application_key    = var.b2_application_key
-  application_key_id = var.b2_application_key_id
+  alias              = "us"
+  application_key    = var.b2_us_application_key
+  application_key_id = var.b2_us_application_key_id
+}
+provider "b2" {
+  alias              = "eu"
+  application_key    = var.b2_eu_application_key
+  application_key_id = var.b2_eu_application_key_id
 }
 provider "discord" {
   token = var.discord_token
@@ -71,8 +77,17 @@ provider "vultr" {
 # modules
 # when possible try to keep things in modules to keep root module clean
 #
-module "backblaze" {
-  source = "./modules/backblaze"
+module "backblaze_eu" {
+  source = "./modules/backblaze-eu"
+  providers = {
+    b2 = b2.eu
+  }
+}
+module "backblaze_us" {
+  source = "./modules/backblaze-us"
+  providers = {
+    b2 = b2.us
+  }
 }
 module "discord_mapletree" {
   source = "./modules/discord-mapletree"
