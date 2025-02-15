@@ -98,17 +98,12 @@ resource "vultr_firewall_rule" "ipv6_ssh" {
 # Compute Instances
 #
 resource "vultr_instance" "kanade" {
-  plan            = "vhp-1c-2gb-amd"
-  region          = "ewr"
-  os_id           = "2076"
-  hostname        = "kanade.mapletree.moe"
-  label           = "kanade.mapletree.moe"
-  enable_ipv6     = true
-  ddos_protection = false
-  # TODO: turn this into a resource
+  plan              = "vhp-1c-2gb-amd"
+  region            = "ewr"
+  os_id             = "2076"
+  hostname          = "kanade.mapletree.moe"
+  label             = "kanade.mapletree.moe"
+  enable_ipv6       = true
+  ddos_protection   = false
   firewall_group_id = vultr_firewall_group.kanade.id
-  # FIXME: For some reason this is forcing a recreate, which means there's a problem.
-  #ssh_key_ids = [
-  #  vultr_ssh_key.yuki_murasame.id
-  #]
 }
