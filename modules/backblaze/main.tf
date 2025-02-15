@@ -12,6 +12,10 @@ terraform {
     b2 = {
       source  = "backblaze/b2"
       version = "~> 0.10.0"
+      configuration_aliases = [
+        b2.eu,
+        b2.us
+      ]
     }
   }
 }
@@ -20,11 +24,13 @@ terraform {
 # application keys
 #
 resource "b2_application_key" "kanade_litestream" {
+  provider     = b2.us
   key_name     = "kanade-litestream"
   bucket_id    = b2_bucket.kanade_state.bucket_id
   capabilities = var.read_write_caps
 }
 resource "b2_application_key" "kanade_db_replication" {
+  provider     = b2.us
   key_name     = "kanade-database-replication"
   bucket_id    = b2_bucket.kanade_databases.bucket_id
   capabilities = var.read_write_caps
@@ -34,6 +40,7 @@ resource "b2_application_key" "kanade_db_replication" {
 # buckets
 #
 resource "b2_bucket" "kanade_databases" {
+  provider    = b2.us
   bucket_name = "kanade-databases"
   bucket_type = "allPrivate"
   default_server_side_encryption {
@@ -42,6 +49,7 @@ resource "b2_bucket" "kanade_databases" {
   }
 }
 resource "b2_bucket" "kanade_state" {
+  provider    = b2.us
   bucket_name = "kanade-state"
   bucket_type = "allPrivate"
   default_server_side_encryption {
@@ -50,10 +58,12 @@ resource "b2_bucket" "kanade_state" {
   }
 }
 resource "b2_bucket" "zyradyl_moe_kuroneko" {
+  provider    = b2.us
   bucket_name = "zyradyl-moe-kuroneko"
   bucket_type = "allPublic"
 }
 resource "b2_bucket" "zyradyl_moe_miyuki" {
+  provider    = b2.us
   bucket_name = "zyradyl-moe-miyuki"
   bucket_type = "allPublic"
 }

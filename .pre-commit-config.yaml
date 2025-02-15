@@ -39,7 +39,7 @@ repos:
     rev: v1.97.3
     hooks:
       - id: terraform_fmt
-      - id: terraform_validate
+      # - id: terraform_validate # see hashicorp/terraform #28490
       - id: terraform_tflint
       - id: terraform_trivy
       # - id: terraform_docs
