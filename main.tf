@@ -77,16 +77,11 @@ provider "vultr" {
 # modules
 # when possible try to keep things in modules to keep root module clean
 #
-module "backblaze_eu" {
-  source = "./modules/backblaze-eu"
+module "backblaze" {
+  source = "./modules/backblaze"
   providers = {
-    b2 = b2.eu
-  }
-}
-module "backblaze_us" {
-  source = "./modules/backblaze-us"
-  providers = {
-    b2 = b2.us
+    b2.eu = b2.eu
+    b2.us = b2.us
   }
 }
 module "discord_mapletree" {
