@@ -80,7 +80,7 @@ resource "hcloud_firewall" "default_firewall" {
 #
 resource "hcloud_server" "kanade" {
   name        = "kanade.mapletree.moe"
-  image       = "alma-9"
+  image       = "rocky-9"
   server_type = "cpx11"
   datacenter  = var.hetzner_datacenter
   firewall_ids = [
