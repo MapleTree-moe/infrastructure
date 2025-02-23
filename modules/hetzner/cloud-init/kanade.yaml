@@ -12,7 +12,7 @@ timezone: Europe/Berlin
 # ssh configuration
 disable_root: true
 disable_root_opts: no-port-forwarding,no-agent-forwarding,no-X11-forwarding
-ssh_genkeytypes: [rsa, ed25519]
+ssh_genkeytypes: [ed25519]
 ssh:
   emit_keys_to_console: false
 allow_public_ssh_keys: true
@@ -20,12 +20,12 @@ ssh_pwauth: false
 
 # user configuration
 users:
-  - name: containers
-    gecos: Container Engine User
-    groups: users,containers
-    primary_group: containers
+  - name: podman
+    gecos: Mapletree.moe Container User
+    groups: users,podman
+    primary_group: podman
   - name: admin
-    gecos: Mapletree Administrator
+    gecos: Mapletree.moe Administrator
     groups: users,admin,docker,wheel
     primary_group: admin
     sudo: ALL=(ALL) NOPASSWD:ALL
