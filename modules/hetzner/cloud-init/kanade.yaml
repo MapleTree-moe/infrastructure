@@ -31,4 +31,4 @@ users:
     sudo: ALL=(ALL) NOPASSWD:ALL
     ssh_authorized_keys:
       # yamllint disable-line rule:line-length
-      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEYfs1EndYHRh5WcW+jkuD7IKSvZZHM+OTqDX0RuYlY5
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKuYlqIG3fsTfKt5xmvbzgxIp1pzh2xiJXGtyBo41DJB nagato@mapletree.com
