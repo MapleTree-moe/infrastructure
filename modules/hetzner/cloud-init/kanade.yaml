@@ -24,10 +24,10 @@ users:
     gecos: Mapletree.moe Container User
     groups: users,podman
     primary_group: podman
-  - name: admin
+  - name: mapletree
     gecos: Mapletree.moe Administrator
-    groups: users,admin,docker,wheel
-    primary_group: admin
+    groups: users,mapletree,docker,wheel
+    primary_group: mapletree
     sudo: ALL=(ALL) NOPASSWD:ALL
     ssh_authorized_keys:
       # yamllint disable-line rule:line-length
