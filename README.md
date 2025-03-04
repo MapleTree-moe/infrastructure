@@ -1,18 +1,18 @@
-# # Mapletree.moe Infrastructire
+## Mapletree.moe Infrastructire
 This repository will eventually contain all the infrastructure components of
 Mapletree.moe as [Terraform][1] objects. For now it is a work in progress.
 Please see the TODO list at the bottom of this document for things that have
 yet to be converted to terraform.
 
-- [# Mapletree.moe Infrastructire](#-mapletreemoe-infrastructire)
-  - [Getting Started](#getting-started)
-  - [Software used](#software-used)
-  - [Modules](#modules)
-  - [Automation](#automation)
-  - [Commit Messages](#commit-messages)
-  - [Comments](#comments)
-  - [Licensing](#licensing)
-  - [TO-DO](#to-do)
+- [Mapletree.moe Infrastructire](#mapletreemoe-infrastructire)
+- [Getting Started](#getting-started)
+- [Software used](#software-used)
+- [Modules](#modules)
+- [Automation](#automation)
+- [Commit Messages](#commit-messages)
+- [Comments](#comments)
+- [Licensing](#licensing)
+- [TO-DO](#to-do)
 
 ## Getting Started
 Make sure you have created a Hashicorp Cloud Account and have been invited to
