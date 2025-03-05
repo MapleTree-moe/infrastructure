@@ -11,7 +11,6 @@ yet to be converted to terraform.
 - [Automation](#automation)
 - [Commit Messages](#commit-messages)
 - [Comments](#comments)
-- [Licensing](#licensing)
 - [TO-DO](#to-do)
 
 ## Getting Started
@@ -68,11 +67,6 @@ standard.
 As the configuration is written in YAML, comments should be primarily reserved
 for things that are not self evident. Additionally, please make use of `FIXME`
 and `TODO` to indicate where effort should be focused in the codebase.
-
-## Licensing
-While there's not really anything here that qualifies as software, the repo is
-licensed under [UNLICENSE][4] to help support the project and move it higher up
-the list of used licenses here on Github.
 
 ## TO-DO
 * convert to VCS based workflow
