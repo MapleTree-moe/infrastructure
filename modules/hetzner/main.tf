@@ -92,7 +92,7 @@ resource "hcloud_server" "kanade" {
     ipv6_enabled = false
   }
   ssh_keys = [
-    hcloud_ssh_key.yuki.id
+    hcloud_ssh_key.nagato.id
   ]
   user_data = file("${path.module}/cloud-init/kanade.yaml")
 }
