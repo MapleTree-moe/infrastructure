@@ -86,10 +86,21 @@ resource "hcloud_server" "kanade" {
   firewall_ids = [
     hcloud_firewall.default_firewall.id
   ]
-  user_data = file("${path.module}/cloud-init/kanade.yaml")
   public_net {
     ipv4_enabled = true
     ipv4         = hcloud_primary_ip.kanade_ipv4.id
     ipv6_enabled = false
   }
+  ssh_keys = [
+    hcloud_ssh_key.yuki.id
+  ]
+  user_data = file("${path.module}/cloud-init/kanade.yaml")
+}
+
+#
+# ssh keys
+#
+resource "hcloud_ssh_key" "yuki" {
+  name       = "zyradyl@murasame.lan"
+  public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEYfs1EndYHRh5WcW+jkuD7IKSvZZHM+OTqDX0RuYlY5 zyradyl@murasame.lan"
 }
