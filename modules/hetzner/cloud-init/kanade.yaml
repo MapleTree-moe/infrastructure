@@ -12,6 +12,7 @@ timezone: Europe/Berlin
 # ssh configuration
 disable_root: true
 disable_root_opts: no-port-forwarding,no-agent-forwarding,no-X11-forwarding
+ssh_deletekeys: true
 ssh_genkeytypes: [ed25519]
 ssh:
   emit_keys_to_console: false
