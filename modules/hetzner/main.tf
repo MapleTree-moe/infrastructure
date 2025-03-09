@@ -100,7 +100,7 @@ resource "hcloud_server" "kanade" {
 #
 # ssh keys
 #
-resource "hcloud_ssh_key" "yuki" {
-  name       = "zyradyl@murasame.lan"
-  public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEYfs1EndYHRh5WcW+jkuD7IKSvZZHM+OTqDX0RuYlY5 zyradyl@murasame.lan"
+resource "hcloud_ssh_key" "nagato" {
+  name       = "nagato@mapletree.moe"
+  public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKuYlqIG3fsTfKt5xmvbzgxIp1pzh2xiJXGtyBo41DJB nagato@mapletree.com"
 }
