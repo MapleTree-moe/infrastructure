@@ -23,7 +23,7 @@ terraform {
 #
 resource "discord_server" "mapletree" {
   name               = "MapleTree.moe"
-  icon_url           = var.server-icon
+  icon_url           = data.discord_local_image.server_icon.data_uri
   verification_level = 3
 }
 
@@ -57,25 +57,40 @@ resource "discord_category_channel" "readme" {
   server_id = discord_server.mapletree.id
   position  = 0
 }
+resource "discord_category_channel" "administration" {
+  name      = "Administration"
+  server_id = discord_server.mapletree.id
+  position  = 1
+}
 resource "discord_category_channel" "discussion" {
   name      = "Discussion"
   server_id = discord_server.mapletree.id
-  position  = 1
+  position  = 2
 }
 resource "discord_category_channel" "requests" {
   name      = "Requests & Issues"
   server_id = discord_server.mapletree.id
-  position  = 2
+  position  = 3
 }
 resource "discord_category_channel" "notifications" {
   name      = "Server Notifications"
   server_id = discord_server.mapletree.id
-  position  = 3
+  position  = 4
 }
 resource "discord_category_channel" "notes" {
   name      = "Server Notes"
   server_id = discord_server.mapletree.id
-  position  = 4
+  position  = 5
+}
+
+#
+# category permissions
+#
+resource "discord_channel_permission" "administration" {
+  channel_id   = discord_category_channel.administration.id
+  type         = "role"
+  overwrite_id = discord_role_everyone.everyone.id
+  deny         = data.discord_permission.deny
 }
 
 #
@@ -112,13 +127,31 @@ resource "discord_text_channel" "readme_hints" {
   position                 = 3
 }
 
+# category: administration
+resource "discord_text_channel" "administration_general" {
+  name                     = "general"
+  server_id                = discord_server.mapletree.id
+  category                 = discord_category_channel.administration.id
+  sync_perms_with_category = true
+  position                 = 5
+  topic                    = "Administrator Discussion"
+}
+resource "discord_text_channel" "administration_server_notice" {
+  name                     = "server-notice"
+  server_id                = discord_server.mapletree.id
+  category                 = discord_category_channel.administration.id
+  sync_perms_with_category = true
+  position                 = 6
+  topic                    = "Server Automation Notices"
+}
+
 # category: discussion
 resource "discord_text_channel" "discussion_general" {
   name                     = "general"
   server_id                = discord_server.mapletree.id
   category                 = discord_category_channel.discussion.id
   sync_perms_with_category = true
-  position                 = 4
+  position                 = 7
   topic                    = "General server discussion"
 }
 resource "discord_text_channel" "discussion_content" {
@@ -126,7 +159,7 @@ resource "discord_text_channel" "discussion_content" {
   server_id                = discord_server.mapletree.id
   category                 = discord_category_channel.discussion.id
   sync_perms_with_category = true
-  position                 = 5
+  position                 = 8
   topic                    = "Talk about movies, shows, anime, etc."
 }
 resource "discord_text_channel" "discussion_technical" {
@@ -134,7 +167,7 @@ resource "discord_text_channel" "discussion_technical" {
   server_id                = discord_server.mapletree.id
   category                 = discord_category_channel.discussion.id
   sync_perms_with_category = true
-  position                 = 6
+  position                 = 9
   topic                    = "Discussion of Maple's Technical components and configuration."
 }
 
@@ -144,7 +177,7 @@ resource "discord_text_channel" "requests_priority" {
   server_id                = discord_server.mapletree.id
   category                 = discord_category_channel.requests.id
   sync_perms_with_category = true
-  position                 = 7
+  position                 = 10
   topic                    = "Please provide the name of your request and why it should be expedited. One priority request per person per week. Thanks!"
 }
 resource "discord_text_channel" "requests_issues" {
@@ -152,7 +185,7 @@ resource "discord_text_channel" "requests_issues" {
   server_id                = discord_server.mapletree.id
   category                 = discord_category_channel.requests.id
   sync_perms_with_category = true
-  position                 = 8
+  position                 = 11
   topic                    = "If you have any issues NOT related to media playback, post them here."
 }
 resource "discord_text_channel" "requests_features" {
@@ -160,7 +193,7 @@ resource "discord_text_channel" "requests_features" {
   server_id                = discord_server.mapletree.id
   category                 = discord_category_channel.requests.id
   sync_perms_with_category = true
-  position                 = 9
+  position                 = 12
   topic                    = "Features you would like to see added to Maple."
 }
 
@@ -170,28 +203,28 @@ resource "discord_text_channel" "notifications_readme" {
   server_id                = discord_server.mapletree.id
   category                 = discord_category_channel.notifications.id
   sync_perms_with_category = true
-  position                 = 10
+  position                 = 13
 }
 resource "discord_text_channel" "notifications_status" {
   name                     = "status"
   server_id                = discord_server.mapletree.id
   category                 = discord_category_channel.notifications.id
   sync_perms_with_category = true
-  position                 = 11
+  position                 = 14
 }
 resource "discord_text_channel" "notifications_requests" {
   name                     = "requests"
   server_id                = discord_server.mapletree.id
   category                 = discord_category_channel.notifications.id
   sync_perms_with_category = true
-  position                 = 12
+  position                 = 15
 }
 resource "discord_text_channel" "notifications_manual" {
   name                     = "manual-intervention"
   server_id                = discord_server.mapletree.id
   category                 = discord_category_channel.notifications.id
   sync_perms_with_category = true
-  position                 = 13
+  position                 = 16
   topic                    = "A message will be sent here when administrator intervention is required for a release."
 }
 resource "discord_text_channel" "notifications_automation" {
@@ -199,7 +232,7 @@ resource "discord_text_channel" "notifications_automation" {
   server_id                = discord_server.mapletree.id
   category                 = discord_category_channel.notifications.id
   sync_perms_with_category = true
-  position                 = 14
+  position                 = 17
   topic                    = "This channel will contain all the various outputs from Maple's automation systems. It is highly recommended you mute it."
 }
 resource "discord_text_channel" "notifications_health" {
@@ -207,7 +240,7 @@ resource "discord_text_channel" "notifications_health" {
   server_id                = discord_server.mapletree.id
   category                 = discord_category_channel.notifications.id
   sync_perms_with_category = true
-  position                 = 15
+  position                 = 18
   topic                    = "Automation and System Health Errors"
 }
 
@@ -217,7 +250,7 @@ resource "discord_text_channel" "notes_perfected" {
   server_id                = discord_server.mapletree.id
   category                 = discord_category_channel.notes.id
   sync_perms_with_category = true
-  position                 = 16
+  position                 = 19
   topic                    = "Library of the servers Perfected Releases."
 }
 resource "discord_text_channel" "notes_build" {
@@ -225,7 +258,7 @@ resource "discord_text_channel" "notes_build" {
   server_id                = discord_server.mapletree.id
   category                 = discord_category_channel.notes.id
   sync_perms_with_category = true
-  position                 = 17
+  position                 = 20
 }
 
 #
@@ -234,6 +267,15 @@ resource "discord_text_channel" "notes_build" {
 resource "discord_system_channel" "system" {
   server_id         = discord_server.mapletree.id
   system_channel_id = discord_text_channel.discussion_general.id
+}
+
+#
+# webhooks
+#
+resource "discord_webhook" "db_backup_webhook" {
+  channel_id      = discord_text_channel.administration_server_notice.id
+  name            = "Nagato - Database Backups"
+  avatar_data_uri = data.discord_local_image.bot_icon.data_uri
 }
 
 #

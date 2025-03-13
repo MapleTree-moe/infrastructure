@@ -30,6 +30,16 @@ variable "welcome-image" {
 }
 
 #
+# icons
+#
+data "discord_local_image" "server_icon" {
+  file = "icons/server.png"
+}
+data "discord_local_image" "bot_icon" {
+  file = "icons/bot.png"
+}
+
+#
 # colors
 #
 data "discord_color" "pink" {
@@ -64,4 +74,21 @@ data "discord_permission" "default" {
   use_external_stickers = "allow"
   use_vad               = "allow"
   view_channel          = "allow"
+}
+data "discord_permission" "deny" {
+  add_reactions         = "deny"
+  attach_files          = "deny"
+  change_nickname       = "deny"
+  connect               = "deny"
+  create_public_threads = "deny"
+  embed_links           = "deny"
+  read_message_history  = "deny"
+  send_messages         = "deny"
+  send_thread_messages  = "deny"
+  speak                 = "deny"
+  stream                = "deny"
+  use_external_emojis   = "deny"
+  use_external_stickers = "deny"
+  use_vad               = "deny"
+  view_channel          = "deny"
 }
