@@ -32,7 +32,7 @@ resource "discord_server" "mapletree" {
 #
 resource "discord_role" "admin" {
   server_id   = discord_server.mapletree.id
-  name        = "Maple Admins"
+  name        = "Administrators"
   hoist       = true
   mentionable = true
   color       = data.discord_color.pink.dec
@@ -40,7 +40,7 @@ resource "discord_role" "admin" {
 }
 resource "discord_role" "user" {
   server_id = discord_server.mapletree.id
-  name      = "Maple Users"
+  name      = "Users"
   hoist     = true
   color     = data.discord_color.purple.dec
 }
