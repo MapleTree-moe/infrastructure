@@ -35,6 +35,12 @@ resource "b2_application_key" "kanade_db_replication" {
   bucket_id    = b2_bucket.kanade_databases.bucket_id
   capabilities = var.read_write_caps
 }
+resource "b2_application_key" "database_backup_key" {
+  provider     = b2.eu
+  key_name     = "mapletree-moe-database-backup-key"
+  bucket_id    = b2_bucket.database_backup_bucket.bucket_id
+  capabilities = var.read_write_caps
+}
 
 #
 # buckets
@@ -66,4 +72,30 @@ resource "b2_bucket" "zyradyl_moe_miyuki" {
   provider    = b2.us
   bucket_name = "zyradyl-moe-miyuki"
   bucket_type = "allPublic"
+}
+
+resource "b2_bucket" "terraform_state" {
+  provider    = b2.eu
+  bucket_name = "mapletree-moe-terraform-state"
+  bucket_type = "allPrivate"
+  default_server_side_encryption {
+    algorithm = "AES256"
+    mode      = "SSE-B2"
+  }
+}
+
+resource "b2_bucket" "tokisaki_data" {
+  provider    = b2.eu
+  bucket_name = "tokisaki-v3-repo"
+  bucket_type = "allPrivate"
+}
+
+resource "b2_bucket" "database_backup_bucket" {
+  provider    = b2.eu
+  bucket_name = "mapletree-moe-database-repo"
+  bucket_type = "allPrivate"
+  default_server_side_encryption {
+    algorithm = "AES256"
+    mode      = "SSE-B2"
+  }
 }
