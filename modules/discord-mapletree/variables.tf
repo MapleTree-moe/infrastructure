@@ -6,11 +6,10 @@
 #
 # reused strings
 #
-# TODO: bring these files into the repository
 variable "nagato-icon" {
   type        = string
   description = "Nagato's current Icon URL"
-  default     = "https://f001.backblazeb2.com/file/zyradyl-moe-miyuki/mapletree-moe-nagato-icon.png"
+  default     = "https://f003.backblazeb2.com/file/mapletree-moe-general-storage/mapletree-moe-nagato-icon.png"
 }
 # TODO: rewrite the footer as a variable
 variable "nagato-version" {
@@ -21,23 +20,14 @@ variable "nagato-version" {
 variable "server-icon" {
   type        = string
   description = "Discord Server Icon"
-  default     = "https://f001.backblazeb2.com/file/zyradyl-moe-miyuki/mapletree-moe-icon.png"
+  default     = "https://f003.backblazeb2.com/file/mapletree-moe-general-storage/mapletree-moe-icon.png"
 }
 variable "welcome-image" {
   type        = string
   description = "Image for the welcome channel embed"
-  default     = "https://f001.backblazeb2.com/file/zyradyl-moe-miyuki/mapletree-moe-welcome.png"
+  default     = "https://f003.backblazeb2.com/file/mapletree-moe-general-storage/mapletree-moe-welcome.png"
 }
 
-#
-# icons
-#
-data "discord_local_image" "server_icon" {
-  file = "icons/server.png"
-}
-data "discord_local_image" "bot_icon" {
-  file = "icons/bot.png"
-}
 
 #
 # colors

@@ -99,3 +99,9 @@ resource "b2_bucket" "database_backup_bucket" {
     mode      = "SSE-B2"
   }
 }
+
+resource "b2_bucket" "general_storage" {
+  provider    = b2.eu
+  bucket_name = "mapletree-moe-general-storage"
+  bucket_type = "allPublic"
+}
