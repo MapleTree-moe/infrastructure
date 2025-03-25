@@ -26,3 +26,10 @@ resource "octodns_a_record" "root" {
   # the root domain A value points to kanade
   values = [var.kanade_ipv4_addr]
 }
+resource "octodns_a_record" "tokisaki" {
+  zone = var.zone_domain
+  name = "tokisaki"
+  ttl  = 300
+  # the root domain A value points to kanade
+  values = [var.tokisaki_ipv4_addr]
+}

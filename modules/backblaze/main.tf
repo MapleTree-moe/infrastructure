@@ -41,6 +41,12 @@ resource "b2_application_key" "database_backup_key" {
   bucket_id    = b2_bucket.database_backup_bucket.bucket_id
   capabilities = var.read_write_caps
 }
+resource "b2_application_key" "tokisaki_access_key" {
+  provider     = b2.eu
+  key_name     = "mapletree-moe-tokisaki-access-key"
+  bucket_id    = b2_bucket.tokisaki_data.bucket_id
+  capabilities = var.read_write_caps
+}
 
 #
 # buckets

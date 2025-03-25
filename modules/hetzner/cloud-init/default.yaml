@@ -3,10 +3,6 @@
 ### mapletree.moe - kanade.mapletree.moe cloud-init
 ###
 # system setup
-fqdn: kanade.mapletree.moe
-hostname: kanade
-prefer_fqdn_over_hostname: true
-create_hostname_file: true
 timezone: Europe/Berlin
 
 # ssh configuration
