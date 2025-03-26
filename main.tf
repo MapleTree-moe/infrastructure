@@ -94,9 +94,10 @@ module "octodns" {
   source = "./modules/octodns"
   # we need to create the servers and have their ip addresses before we can
   # use them in octodns
-  depends_on       = [module.hetzner]
-  kanade_ipv4_addr = module.hetzner.kanade_ipv4_addr
-  zone_domain      = var.domain
+  depends_on         = [module.hetzner]
+  kanade_ipv4_addr   = module.hetzner.kanade_ipv4_addr
+  tokisaki_ipv4_addr = module.hetzner.tokisaki_ipv4_addr
+  zone_domain        = var.domain
 }
 module "vultr" {
   source = "./modules/vultr"
