@@ -9,5 +9,5 @@ output "kanade_ipv4_addr" {
 }
 output "tokisaki_ipv4_addr" {
   description = "Tokisaki's ipv4 address"
-  value       = hcloud_primary_ip.kanade_ipv4.ip_address
+  value       = hcloud_primary_ip.tokisaki_ipv4.ip_address
 }
