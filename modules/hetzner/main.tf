@@ -88,8 +88,8 @@ resource "hcloud_firewall" "default_firewall" {
 #
 resource "hcloud_server" "kanade" {
   name        = "kanade.mapletree.moe"
-  image       = "rocky-9"
-  server_type = "cx22"
+  image       = "alma-9"
+  server_type = "cax11"
   datacenter  = var.hetzner_datacenter
   firewall_ids = [
     hcloud_firewall.default_firewall.id
@@ -106,8 +106,8 @@ resource "hcloud_server" "kanade" {
 }
 resource "hcloud_server" "tokisaki" {
   name        = "tokisaki.mapletree.moe"
-  image       = "rocky-9"
-  server_type = "cx22"
+  image       = "alma-9"
+  server_type = "cax21"
   datacenter  = var.hetzner_datacenter
   firewall_ids = [
     hcloud_firewall.default_firewall.id
