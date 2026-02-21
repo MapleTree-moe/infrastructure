@@ -11,7 +11,7 @@ terraform {
   required_providers {
     b2 = {
       source  = "backblaze/b2"
-      version = "~> 0.10.0"
+      version = "~> 0.12.0"
       configuration_aliases = [
         b2.eu,
         b2.us
