@@ -9,7 +9,7 @@ terraform {
   required_providers {
     octodns = {
       source  = "topicusonderwijs/octodns"
-      version = "~> 1.1.2"
+      version = "~> 1.2.0"
     }
   }
 }

@@ -29,7 +29,7 @@ terraform {
     }
     octodns = {
       source  = "topicusonderwijs/octodns"
-      version = "~> 1.1.2"
+      version = "~> 1.2.0"
     }
     vultr = {
       source  = "vultr/vultr"
